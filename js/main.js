@@ -1,64 +1,3 @@
-const catalog = [{
-        id: 0,
-        name: "YAMAHA F310",
-        img: "img/1.jpg",
-        price: 110,
-    },
-    {
-        id: 1,
-        name: "FENDER SQUIER SA-150 DREADNOUGHT, NAT",
-        img: "img/2.jpg",
-        price: 95,
-    },
-    {
-        id: 2,
-        name: "VESTON F-38/BK",
-        img: "img/3.jpg",
-        price: 80,
-    },
-    {
-        id: 3,
-        name: "FENDER CD-60S DREAD NAT WN",
-        img: "img/4.jpg",
-        price: 210,
-    },
-    {
-        id: 4,
-        name: "FENDER CD-60SCE DREAD BLACK WN",
-        img: "img/5.jpg",
-        price: 290,
-    },
-    {
-        id: 5,
-        name: "YAMAHA F310",
-        img: "img/1.jpg",
-        price: 110,
-    },
-    {
-        id: 6,
-        name: "FENDER SQUIER SA-150 DREADNOUGHT, NAT",
-        img: "img/2.jpg",
-        price: 95,
-    },
-    {
-        id: 7,
-        name: "VESTON F-38/BK",
-        img: "img/3.jpg",
-        price: 80,
-    },
-    {
-        id: 8,
-        name: "FENDER CD-60S DREAD NAT WN",
-        img: "img/4.jpg",
-        price: 210,
-    },
-    {
-        id: 9,
-        name: "FENDER CD-60SCE DREAD BLACK WN",
-        img: "img/5.jpg",
-        price: 290,
-    },
-];;
 $(".burger").click(function (event) {
   $(".burger, .menu").toggleClass("active");
   $(".logoCont").toggleClass("colorActive");
@@ -121,6 +60,7 @@ function darkMode() {
   $(".shoppingItem__price").toggleClass("darkShoppingItem__price");
   $(".amount").toggleClass("darkAmount");
   $(".cu").toggleClass("ddd");
+  $(".d").toggleClass("metaColor");
 }
 
 let isDark = localStorage.getItem("isDark");
@@ -167,90 +107,81 @@ window.onload = function() {
         }
     });
 };;
-const ROOT_PRODUCTS = document.querySelector(".products");
-const ROOT_PRODUCT = document.querySelector(".product");
-const ROOT_HEADER = document.querySelector(".header");
-const ROOT_SHOPPING = document.querySelector(".shopping");
-const ROOT_CART = document.querySelector(".cartCount");;
 
 const cart = document.querySelector(".menuItems__item-cart");
 
-cart.onclick = function() {
-    document.querySelector("body").classList.toggle("scrollLock1");
-    document.querySelector(".bg").classList.toggle("bgHidden");
-    document.querySelector(".shoppingCont").classList.toggle("shoppingHidden");
+cart.onclick = function () {
+  document.querySelector("body").classList.toggle("scrollLock1");
+  document.querySelector(".bg").classList.toggle("bgHidden");
+  document.querySelector(".shoppingCont").classList.toggle("shoppingHidden");
+  document.querySelector("body").classList.toggle("peNone");
 };
 
 const close = document.querySelector(".close");
 
-close.onclick = function() {
-    document.querySelector("body").classList.remove("scrollLock1");
-    document.querySelector(".shoppingCont").classList.add("shoppingHidden");
-    document.querySelector(".bg").classList.add("bgHidden");
+close.onclick = function () {
+  document.querySelector("body").classList.remove("scrollLock1");
+  document.querySelector(".shoppingCont").classList.add("shoppingHidden");
+  document.querySelector(".bg").classList.add("bgHidden");
+  document.querySelector("body").classList.remove("peNone");
 };
 
-// $(".shoppingCont__inner").niceScroll({
-//     //  cursorcolor: "orange",
-//     //  mousescrollstep: 30,
-//     //  cursorborder: "none",
-//     //  smoothscroll: true, // scroll with ease movement
-//     //  //   sensitiverail: true, // click on rail make a scroll
-//     //  horizrailenabled: false,
-//     //  oneaxismousemode: "hidden",
-// });
+window.onload = function () {
+  $(".slider").slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots: true,
+    arrows: true,
+    cssEase: "ease",
+    speed: 750,
+    //fade: true,
 
-window.onload = function() {
-    $(".slider").slick({
-        autoplay: true,
-        autoplaySpeed: 5000,
-        dots: true,
-        arrows: true,
-        cssEase: "ease",
-        speed: 750,
-        //fade: true,
-
-        prevArrow: '<span class="slick-prev pull-left"><img class="larrow" src="./img/larrow.png"></span>',
-        nextArrow: '<span class="slick-next pull-right"><img class="rarrow" src="./img/rarrow.png"></span>',
-    });
+    prevArrow:
+      '<span class="slick-prev pull-left"><img class="larrow" src="./img/larrow.png"></span>',
+    nextArrow:
+      '<span class="slick-next pull-right"><img class="rarrow" src="./img/rarrow.png"></span>',
+  });
 };
 
 $('a[href*="#"]')
-    // Remove links that don't actually link to anything
-    .not('[href="#"]')
-    .not('[href="#0"]')
-    .click(function(event) {
-        // On-page links
-        if (
-            location.pathname.replace(/^\//, "") ==
-            this.pathname.replace(/^\//, "") &&
-            location.hostname == this.hostname
-        ) {
-            // Figure out element to scroll to
-            var target = $(this.hash);
-            target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
-            // Does a scroll target exist?
-            if (target.length) {
-                // Only prevent default if animation is actually gonna happen
-                event.preventDefault();
-                $("html, body").animate({
-                        scrollTop: target.offset().top,
-                    },
-                    1000,
-                    function() {
-                        // Callback after animation
-                        // Must change focus!
-                        var $target = $(target);
-                        $target.focus();
-                        if ($target.is(":focus")) {
-                            // Checking if the target was focused
-                            return false;
-                        } else {
-                            $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
-                            $target.focus(); // Set focus again
-                        }
-                    }
-                );
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function (event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, "") ==
+        this.pathname.replace(/^\//, "") &&
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $("html, body").animate(
+          {
+            scrollTop: target.offset().top,
+          },
+          1000,
+          function () {
+            // Callback after animation
+            // Must change focus!
+            var $target = $(target);
+            $target.focus();
+            if ($target.is(":focus")) {
+              // Checking if the target was focused
+              return false;
+            } else {
+              $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
+              $target.focus(); // Set focus again
             }
-        }
-    });
+          }
+        );
+      }
+    }
+  });
+
 //# sourceMappingURL=main.js.map
