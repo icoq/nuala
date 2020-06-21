@@ -17,10 +17,10 @@ $(".menuItems__item-cat").addClass("selected");
 
 function darkMode() {
   var x = document.querySelector(".darkMode");
-  if (x.innerHTML == "Dark Mode?") {
-    x.innerHTML = "Light Mode?";
+  if (x.innerHTML == "Dark Mode") {
+    x.innerHTML = "Light Mode";
   } else {
-    x.innerHTML = "Dark Mode?";
+    x.innerHTML = "Dark Mode";
   }
 
   $(".darkMode").toggleClass("whiteMode");
